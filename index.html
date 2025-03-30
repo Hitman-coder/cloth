@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store - Shop Anytime, Anywhere</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: white;
+            color: black;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+        header img {
+    height: 90px; /* Adjust the height for better visibility */
+    width: 120px;  /* Ensure it's a square */
+    object-fit: cover; /* Ensures the image fits well */
+    padding: 5px; /* Optional: Adds some spacing */
+}
+        .nav-links {
+
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            height: 35px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .auth-buttons button {
+            height: 35px;
+            margin-left: 10px;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: background 0.3s;
+        }
+        .auth-buttons button:hover {
+            background: #ddd;
+        }
+        .sales-section {
+            background: #ffeb3b;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .category-section {
+            display: flex;
+            height: 300px;
+            width: 100%;
+            gap: 3%;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .category-section div {
+            height: 300px;
+            width: 25%;
+            text-align: center;
+        }
+        .category-section img {
+            width: 98%;
+            height: 210px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .category-section img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            transition: background 0.3s;
+        }
+        footer:hover {
+            background: #292d32;
+        }
+        .footer-column {
+            width: 30%;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .footer-column ul li:hover {
+            color: #ffeb3b;
+        }
+        .footer-icons img {
+            width: 30px;
+            margin: 5px;
+            transition: transform 0.3s;
+        }
+        .footer-icons img:hover {
+            transform: scale(1.2);
+        }
+        .sales-section {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            background: #ffeb3b;
+        }
+        .sales-section marquee {
+            display: flex;
+        }
+        .sales-container {
+            display: flex;
+            gap: 20px;
+        }
+        .sales-item {
+            background: #ffeb3b;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .sales-item:hover {
+            transform: scale(1.05);
+            background: #ffd700;
+        }
+        .sales-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        .carousel-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .prev:hover, .next:hover {
+            background: black;
+        }
+        #default-carousel {
+    width: 100%;
+    max-width: 1200px; /* Ensures it doesn’t stretch too wide */
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#default-carousel .relative {
+    height: 450px; /* Adjust height to make images visible */
+}
+
+#default-carousel [data-carousel-inner] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#default-carousel img {
+    width: 100%;
+    height: 100%;
+    max-height: 450px; /* Keeps images contained */
+    object-fit: contain; /* Ensures the full image is visible */
+    border-radius: 10px;
+    background: white; /* Avoids gaps in case of transparent areas */
+}
+
+.sales-section {
+    width: 100%;
+    background: linear-gradient(135deg, #2b5876, #4e4376); /* Cool gradient background */
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+.sales-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.sales-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px; /* Ensures items are visible */
+    max-width: 320px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: white; /* Keeps each sale item clean */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sales-item:hover {
+    transform: scale(1.05);
+}
+
+.sales-item img {
+    width: 100%;
+    height: 250px; /* Bigger images */
+    object-fit: cover; /* Ensures images fit well */
+    border-radius: 10px;
+}
+
+.sales-item span {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #ff4b5c; /* Stylish button-like background */
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+}
+/* Hide checkbox */
+.sidebar-checkbox {
+    display: none;
+}
+
+/* Sidebar (Hidden by Default) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    color: white;
+    padding-top: 60px;
+    transition: 0.3s;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #007bff;
+}
+
+/* Sidebar Icon (☰) for Mobile */
+.sidebar-icon {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+}
+
+/* Show Sidebar when Checkbox is Checked */
+.sidebar-checkbox:checked ~ .sidebar {
+    left: 0;
+}
+/* Sidebar (Hidden by Default) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    color: black;
+    padding-top: 60px;
+    transition: 0.3s;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* Sidebar Icon (☰) */
+.sidebar-icon {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+/* Show Sidebar */
+.sidebar.show {
+    left: 0;
+}
+
+/* Hide Regular Nav & Auth Buttons on Mobile */
+@media (max-width: 767px) {
+    .nav-links, .auth-buttons {
+        display: none;
+    }
+
+    .sidebar-icon {
+        display: block;
+    }
+}
+
+/* Show Regular Nav & Hide Sidebar on Larger Screens */
+@media (min-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
+/* Hide Regular Nav & Auth Buttons on Mobile */
+@media (max-width: 767px) {
+    .nav-links, .auth-buttons {
+        display: none;
+    }
+
+    .sidebar-icon {
+        display: block;
+    }
+}
+
+/* Show Regular Nav & Hide Sidebar on Larger Screens */
+@media (min-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+    #default-carousel .relative {
+        height: 500px; /* Bigger height for larger screens */
+    }
+}
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-bar {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .category-section {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .category-section div {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+
+    .carousel img {
+        height: 350px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        width: 100%;
+    }
+}
+
+/* Mobile Devices (max-width: 767px) */
+@media (max-width: 767px) {
+    header {
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .search-bar input {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .category-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-section div {
+        width: 80%;
+    }
+
+    .carousel img {
+        height: 300px;
+    }
+
+    .sales-section {
+        white-space: normal;
+        padding: 10px;
+    }
+
+    .sales-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sales-item {
+        width: 100%;
+    }
+
+    footer {
+        padding: 15px;
+    }
+
+    .footer-column {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 5px;
+    }
+
+    .nav-links {
+        font-size: 14px;
+        gap: 5px;
+    }
+
+    .category-section div {
+        width: 100%;
+    }
+
+    .carousel img {
+        height: 250px;
+    }
+
+    .sales-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .sales-item img {
+        width: 90%;
+        height: 200px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+
+    .footer-column h3 {
+        font-size: 16px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
+</div>
+<header>
+    <!-- Sidebar Toggle Checkbox (Hidden) -->
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox">
+    
+    <!-- Sidebar Icon for Mobile -->
+    <label for="sidebar-toggle" class="sidebar-icon">
+        ☰
+    </label>
+
+    <!-- Logo -->
+    <img src="https://cbx-prod.b-cdn.net/COLOURBOX38683653.jpg?width=800&height=800&quality=70" class="logo">
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <!-- Regular Navigation (Visible on larger screens) -->
+    <nav class="nav-links">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products...">
+    </div>
+
+    <!-- Auth Buttons (Only Visible on Larger Screens) -->
+    <div class="auth-buttons">
+        <button onclick="location.href='login.html'">Login</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+    </div>
+</header>
+
+    <div class="w-full mx-auto">
+
+        <div id="default-carousel" class="relative w-full rounded-lg overflow-hidden shadow-lg" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="relative h-96 md:h-[500px] w-full" data-carousel-inner>
+                <!-- Item 1 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/clothing-sale-poster-design-template-5a552c349d8e799f68cc5f8fe1f24e24_screen.jpg?ts=1686280795" class="object-cover w-full h-full" alt="Slide 1">
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://www.gazman.com.au/cdn/shop/articles/feature_1_1.png?v=1695701831" class="object-cover w-full h-full" alt="Slide 2">
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://thevishnu.in/cdn/shop/articles/Frame_4_2a22225c-1c8e-434f-b877-7dfe824317df.png?v=1718008904" class="object-cover w-full h-full" alt="Slide 3">
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsL4voVqM-mbLAQ71ni3a9IDsx7Bwi4Xc2NA&s" class="object-cover w-full h-full" alt="Slide 4">
+                </div>
+            </div>
+            <!-- Slider indicators -->
+            <div class="flex absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-2" data-carousel-indicators>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition"></button>
+                <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition"></button>
+            </div>
+            <!-- Slider controls -->
+            <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 transition" data-carousel-prev>
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 transition" data-carousel-next>
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    
+        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+    </div>
+    
+    <div class="sales-section">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            <div class="sales-container">
+                <div class="sales-item">
+                    <img src="https://images.bewakoof.com/uploads/grid/app/Best-Casual-Summer-Outfit-for-Men-bewakoof-blog-10-1619415036.jpg" alt="Sale Item 1">
+                    <span>Flat 50% Off on Men's Wear!</span>
+                </div>
+                <div class="sales-item">
+                    <img src="https://www.jeffa.in/cdn/shop/files/Winter_Gym_Wear_Collection_Banner.webp?v=1733554145&width=1100" alt="Sale Item 2">
+                    <span>Buy 1 Get 1 Free - Women's Collection</span>
+                </div>
+                <div class="sales-item">
+                    <img src="https://i0.wp.com/www.silkfred.com/blog/wp-content/uploads/2022/04/what-to-wear-on-holiday.jpeg?fit=3024%2C3024&ssl=1" alt="Sale Item 3">
+                    <span>Limited Offer - Kids' Wear Starting at $9.99</span>
+                </div>
+                <div class="sales-item">
+                    <img src="https://deuxpardeux.com/cdn/shop/articles/how-to-dress-kid-summer_c958e17c-527c-4a01-9ae3-aadc30d91f0d.jpg?v=1717344332" alt="Sale Item 4">
+                    <span>Exclusive Winter Collection - Up to 40% Off</span>
+                </div>
+                <div class="sales-item">
+                    <img src="https://images.jdmagicbox.com/comp/thrissur/q7/9999px487.x487.180928192959.r2q7/catalogue/mens-collection-thrissur-e856idtfnx-250.jpg" alt="Sale Item 5">
+                    <span>Flash Sale! Hurry Before Stock Runs Out!</span>
+                </div>
+            </div>
+        </marquee>
+    </div>
+
+    <div class="category-section">
+        <div>
+            <a href="Menscolection.html"><img src="https://www.ratanjaipur.com/cdn/shop/articles/Blog_Banner_-_Latest_Men_s_Collection_1.jpg?v=1726216596&width=2048" alt="Mens collection"></a>
+            <a href="Menscolection.html"><button>Mens Collection</button></a>
+        </div>
+        <div>
+            <a href="Womencollecion.html"><img src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/Reliance_Trends/images/Categories_Women_Top_Banner_SS_25_624_x_470_02.png" alt="Womens collection"></a>
+            <a href="Womencollecion.html"><button>Womens Collection</button></a>
+        </div>
+        <div>
+            <a href="Kidscollection.html"><img src="https://res.cloudinary.com/purnesh/image/upload/w_540,f_auto,q_auto:eco,c_limit/21604555004027.jpg" alt="Kids collection"></a>
+            <a href="Kidscollection.html"><button>Kids Collection</button></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-column">
+            <h3>Online Shopping</h3>
+            <ul>
+                <li>Men</li>
+                <li>Women</li>
+                <li>Kids</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Customer Policies</h3>
+            <ul>
+                <li>Contact Us</li>
+                <li>FAQ</li>
+                <li>Returns</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Experience Our App</h3>
+            <img src="qrcode.png" alt="QR Code">
+            <p>📍 Our Location: 123 Fashion Street, NY</p> 
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebarToggle = document.querySelector(".sidebar-icon");
+            const sidebar = document.querySelector(".sidebar");
+    
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("show");
+            });
+    
+            // Close sidebar when clicking outside of it
+            document.addEventListener("click", function (event) {
+                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove("show");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

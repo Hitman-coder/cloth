@@ -1,0 +1,72 @@
+#header{
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    color: black;
+}
+.nav{
+    color: black;
+}
+#m1{
+    width: 65%;
+}
+
+img{
+    height: 60px;
+    width: 30%;
+}
+
+#main2{
+    height: 700px;
+    width: 100%;
+    background-image: url("https://b.zmtcdn.com/data/pictures/chains/6/10556/09c94209d2359acc20ca8119d54f4a1c.jpg?fit=around|960:500&crop=960:500;*,*");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: aliceblue;
+}
+
+#f1{
+    height: 300px;
+    width: 100%;
+    background-color:green;
+}
+
+#cont{
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    gap: 12%;
+    
+}
+
+h2{
+    color: yellow;
+}
+
+.abc{
+    text-decoration: none;
+    color: green;
+    text-align: center;
+}
+
+hr{
+    width: 80%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+#loc1{
+    height: 150px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+footer,a{
+    color: aliceblue;
+}

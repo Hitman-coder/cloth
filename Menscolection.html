@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Clothing Collection</title>
+    <style>
+        /* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+.back-button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: #ddd;
+}
+
+
+/* Section Styling */
+.collection {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.collection h2 {
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: black;
+    color: white;
+    margin-top: 30px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <button class="back-button" onclick="location.href='home.html'">← Back to Home</button>
+        <h1>Men's Fashion Collection</h1>
+    </header>
+
+    <!-- Winter Collection -->
+    <section class="collection">
+        <h2>Winter Wear</h2>
+        <div class="image-grid">
+            <img src="https://i5.walmartimages.com/seo/Gubotare-Men-Coat-Casual-Wool-Jackets-Men-s-Winter-Jacket-Mountain-Sheepskin-Lamb-Men-s-Coats-Jackets-Brown-XXXL_b9921bb5-29d8-41ee-a6ad-72a6b5ffe1f8.4a732a492306cd0b81c8ea4aaf1a171b.jpeg" alt="Winter Coat">
+            <img src="https://m.media-amazon.com/images/I/71os82tkfmL._AC_UY1100_.jpg" alt="Wool Sweater">
+            <img src="https://5.imimg.com/data5/YU/PD/WS/SELLER-61259432/men-s-winter-fashion-jacket.jpg" alt="Winter Jacket">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcld4qU38W4QlJzSlaYwJenGkwQHvs4_hk0w&s" alt="Warm Hoodie">
+        </div>
+    </section>
+
+    <!-- Summer Collection -->
+    <section class="collection">
+        <h2>Summer Wear</h2>
+        <div class="image-grid">
+            <img src="https://aeo.abfrl.in/blog/wp-content/uploads/2023/06/image-4.png" alt="Summer Shirt">
+            <img src="https://assets.ajio.com/medias/sys_master/root/20240521/XfmY/664ca4bb05ac7d77bb6bd0c3/-473Wx593H-467350346-black-MODEL.jpg" alt="Printed Shirt">
+            <img src="https://5.imimg.com/data5/ECOM/Default/2023/7/325500112/UA/UE/RB/89917777/1659004573781-whatsapp-image-2022-07-12-at-11-50-40-am-originnm80prcnt-500x500.webp" alt="Casual T-shirt">
+            <img src="https://i.pinimg.com/736x/ff/4e/fa/ff4efa88522387903d39fff8f73c448a.jpg" alt="Beach Outfit">
+        </div>
+    </section>
+
+    <!-- Formal Collection -->
+    <section class="collection">
+        <h2>Formal Wear</h2>
+        <div class="image-grid">
+            <img src="https://cdn.shopify.com/s/files/1/0094/6326/7379/files/Amin_Rick_suit_Collection_480x480.jpg?v=1650461657" alt="Men's Suit">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2WCCqhXQCdP0gndh7bvmHDkDqRXbhovtnag&s" alt="Formal Vest">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHoOGf7M9P1g8HvyjO_aM3hse8L9XPoM9iJA&s" alt="Business Attire">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2023/1/DH/WH/AZ/181659319/suit.jpeg" alt="Blazer Suit">
+        </div>
+    </section>
+
+    <!-- Casual Collection -->
+    <section class="collection">
+        <h2>Casual Wear</h2>
+        <div class="image-grid">
+            <img src="https://www.bewakoof.com/blog/wp-content/uploads/2023/03/image-19.png" alt="Casual Outfit">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNYwvrnc_xf1vXfYxMiMsqeZhUyDd2_bWd3Q&s" alt="Relaxed T-shirt">
+            <img src="https://s.alicdn.com/@sc04/kf/Hb375eeddceab45bfa38d3c92cf43184bU.jpg_720x720q50.jpg" alt="Casual Jacket">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx73WYt_I6DBdUZXT7SVC8t087kmaUhnPegg&s" alt="Urban Casual">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Men's Fashion Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
